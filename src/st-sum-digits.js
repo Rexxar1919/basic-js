@@ -13,18 +13,19 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getSumOfDigits( n ) {
-  throw new NotImplementedError('Not implemented');
+  //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
-  let arr = n.toString(10).replace(/\D/g, '0').split('').map(Number), sum = 0;
-  if (arr.length > 1) {
-    for (let biba = 0; biba < arr.length; biba++) {
-      sum += arr[biba];
-    }
-    getSumOfDigits( sum );
-  } else {
-    if (sum == 0) {
-      return n;
-    }
-    return sum;
-  }
+  // let arr = n.toString(), sum = 0;
+  
+  //   for (let biba = 0; biba < arr.length; biba++) {
+  //     sum += parseInt(arr.charAt(biba), 10);
+  //   }
+  //   let arr2 = sum.toString();
+  //   if (arr2.length > 2) {
+  //     getSumOfDigits( sum );
+  //   } else {
+  //     return sum;
+  //   }
+  let sum = Array.from(n.toString()).map(Number).reduce((res, val) => res + val, 0);
+  return sum < 10 ? sum : getSumOfDigits(sum);
 }
